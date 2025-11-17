@@ -1,17 +1,8 @@
 import React from 'react'
-import Circular from 'src/features/avatars/components/Circular.tsx'
-import Rounded from 'src/features/avatars/components/Rounded.tsx'
-import Notification from 'src/features/avatars/components/Notification.tsx'
 import List from 'src/shared/layout/list/List.tsx'
 import ListContent from 'src/shared/layout/list/ListContent.tsx'
-import CircularPlaceholerIcon from 'src/features/avatars/components/CircularPlaceholerIcon.tsx'
-import CircularPlaceholderInitials from 'src/features/avatars/components/CircularPlaceholderInitials.tsx'
-import AvatarGroupBottomToTop from 'src/features/avatars/components/AvatarGroupBottomToTop.tsx'
-import AvatarsGroupTopToBottom from 'src/features/avatars/components/AvatarsGroupTopToBottom.tsx'
-import Profile from 'src/features/avatars/components/Profile.tsx'
 import Avatar from 'src/features/avatars/components/Avatar.tsx'
 import GroupAvatar from 'src/features/avatars/components/avatarType/GroupAvatar.tsx'
-import { href } from 'react-router'
 
 const Avatars = () => {
     return (
