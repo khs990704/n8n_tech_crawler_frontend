@@ -9,9 +9,7 @@ const ListContent = ({
 }) => (
     <li className="py-10">
         <span className="mb-4 block">{title}</span>
-        <div className="flex items-center justify-center gap-10">
-            {children}
-        </div>
+        <div className="flex items-center justify-center gap-5">{children}</div>
     </li>
 )
 

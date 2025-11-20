@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import InitialAvatar from 'src/features/avatars/components/avatarType/InitialAvatar.tsx'
 import IconAvatar from 'src/features/avatars/components/avatarType/IconAvatar.tsx'
 import ImgAvatar from 'src/features/avatars/components/avatarType/ImgAvatar.tsx'
-import { GroupAvatarContext } from 'src/features/avatars/components/avatarType/GroupAvatarContext.tsx'
+import { GroupAvatarContext } from 'src/features/avatars/components/GroupAvatarContext.tsx'
 
 const Avatar = ({
     shape = 'circular',

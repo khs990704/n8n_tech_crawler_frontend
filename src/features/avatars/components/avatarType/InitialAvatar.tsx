@@ -1,5 +1,5 @@
 import React from 'react'
-import HrefWrapper from 'src/features/avatars/components/avatarType/HrefWrapper.tsx'
+import HrefWrapper from 'src/features/avatars/components/HrefWrapper.tsx'
 
 const InitialAvatar = ({
     group,

@@ -2,7 +2,7 @@ import React from 'react'
 import List from 'src/shared/layout/list/List.tsx'
 import ListContent from 'src/shared/layout/list/ListContent.tsx'
 import Avatar from 'src/features/avatars/components/Avatar.tsx'
-import GroupAvatar from 'src/features/avatars/components/avatarType/GroupAvatar.tsx'
+import GroupAvatar from 'src/features/avatars/components/GroupAvatar.tsx'
 
 const Avatars = () => {
     return (
@@ -796,10 +796,7 @@ const Avatars = () => {
                     />
                 </ListContent>
                 <ListContent title="Grouped Icon Avatars">
-                    <GroupAvatar
-                        to="top"
-                        space={2}
-                    >
+                    <GroupAvatar to="top" space={2}>
                         <Avatar
                             shape="circular"
                             size={10}
