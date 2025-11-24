@@ -18,6 +18,18 @@ const Elements = () => {
             >
                 Badges Examples
             </button>
+            <button
+                onClick={() => navigate('/applicationui/elements/buttons')}
+                className="rounded bg-blue-500 px-4 py-2 text-white"
+            >
+                Buttons Examples
+            </button>
+            <button
+                onClick={() => navigate('/applicationui/elements/dropdowns')}
+                className="rounded bg-blue-500 px-4 py-2 text-white"
+            >
+                Dropdowns Examples
+            </button>
         </div>
     )
 }
