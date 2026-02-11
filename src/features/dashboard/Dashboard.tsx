@@ -30,10 +30,10 @@ const Dashboard = () => {
             <div className="mx-auto max-w-[1400px]">
                 <header className="mb-[30px]">
                     <h1 className="mb-[10px] text-[30px] leading-[1.2] font-bold text-[#1a1a1a]">
-                        📊 키워드 대시보드
+                        📊 AI 키워드 대시보드
                     </h1>
                     <p className="text-[15px] text-[#666]">
-                        실시간 키워드 분석 및 관련 기사 조회
+                        실시간 AI 관련 키워드 분석 및 기사 조회
                     </p>
                 </header>
 
