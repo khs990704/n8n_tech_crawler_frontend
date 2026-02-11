@@ -1,100 +1,105 @@
-# SS Tailwind UI
+# n8n RSS Pipeline Frontend Dashboard
 
-[![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=flat&logo=storybook&logoColor=white)](https://storybook.js.org/)
-[![Radix UI](https://img.shields.io/badge/Radix%20UI-161618?style=flat&logo=radix-ui&logoColor=white)](https://www.radix-ui.com/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Yarn](https://img.shields.io/badge/Yarn-4-2C8EBB?logo=yarn&logoColor=white)](https://yarnpkg.com/)
 
-[한국어 설명서는 여기에서 볼 수 있습니다.](./README.ko.md)
+This project builds the dashboard page defined in `n8n_frontend.html` as a React + TypeScript application.
+The current implementation keeps the same UI and interaction flow while splitting the page into reusable components.
 
----
+## What This Project Is
 
-This project is a collection of custom, accessible, and reusable React components built upon a foundation of **Tailwind CSS**, **TypeScript**, and **Radix UI**. While it includes a base set of components from a boilerplate (inspired by shadcn/ui), the primary focus is on creating new, feature-rich components like the **Avatar suite**.
+- A React implementation of the `n8n_frontend.html` keyword dashboard
+- Period tabs (`3d`, `1w`, `1m`)
+- Wordcloud/image area
+- Top keyword ranking list
+- Related article table for the selected keyword
+- A local mock-data driven UI for frontend development
 
-The goal is to develop and showcase powerful, composable components for modern web applications.
+## HTML to React Mapping
 
-## ✨ Featured Component: Avatar
+- `n8n_frontend.html`: original single-file dashboard prototype (HTML/CSS/JS)
+- `src/features/dashboard/Dashboard.tsx`: main page composition
+- `src/features/dashboard/components/PeriodTabs.tsx`: period selector tabs
+- `src/features/dashboard/components/WordcloudCard.tsx`: image panel
+- `src/features/dashboard/components/KeywordRanking.tsx`: keyword ranking list
+- `src/features/dashboard/components/ArticleTable.tsx`: related article table
+- `src/features/dashboard/mockData.ts`: period/keyword/article sample data
 
-The centerpiece of this collection is the highly customizable `Avatar` component. It's designed to be flexible and cover a wide range of use cases.
+## Tech Stack
 
-- **Multiple Types**: Supports image (`img`), initial (`initial`), and icon (`icon`) avatars.
-- **Customizable**: Control shape, size, text, and more.
-- **Status Indicator**: Easily display user status (online, offline, etc.).
-- **Grouping**: Includes a `GroupAvatar` component to elegantly stack multiple avatars.
-- **Accessible**: Built with accessibility in mind.
+- React 19 + TypeScript
+- Vite 6 (SWC)
+- Tailwind CSS 4
+- React Router 7
+- Redux Toolkit
+- i18next (Korean/English resources included)
 
-## 📖 Usage Example
+## Project Structure
 
-Here's how you can use the `Avatar` and `GroupAvatar` components.
-
-```tsx
-import Avatar from 'src/features/avatars/components/Avatar';
-import GroupAvatar from 'src/features/avatars/components/avatarType/GroupAvatar';
-import { User, Users } from 'lucide-react';
-
-function AvatarShowcase() {
-  return (
-    <div className="space-y-8">
-      {/* Individual Avatars */}
-      <div className="flex items-center gap-4">
-        <Avatar type="initial" text="SS" size={12} />
-        <Avatar type="img" src="/path/to/image.png" size={12} status="online" />
-        <Avatar type="icon" src={User} size={12} shape="rounded" />
-      </div>
-
-      {/* Grouped Avatars */}
-      <GroupAvatar>
-        <Avatar type="img" src="/path/to/user1.png" size={10} />
-        <Avatar type="img" src="/path/to/user2.png" size={10} />
-        <Avatar type="initial" text="AB" size={10} />
-        <Avatar type="icon" src={Users} size={10} />
-      </GroupAvatar>
-    </div>
-  );
-}
+```txt
+src/
+  app/
+    api/                    # Axios clients + streaming helper
+    router/                 # Router configuration
+    store/redux/            # Redux store and hooks
+  features/
+    dashboard/              # Dashboard page and components
+    Home.tsx                # Home feature entry
+  pages/
+    HomePage.tsx            # "/" route
+    extra/                  # NotFound and helper pages
 ```
 
-## 🚀 Underlying Architecture
+## Getting Started
 
-The components in this project leverage a powerful modern stack:
+### Prerequisites
 
-- **Base Primitives**: Core logic and accessibility are handled by unstyled primitives from [Radix UI](https://www.radix-ui.com/).
-- **Utility-First Styling**: [Tailwind CSS](https://tailwindcss.com/) is used for all styling.
-- **Component Variants**: Variants are managed by [Class Variance Authority (CVA)](https://cva.style/docs).
-- **Intelligent Class Merging**: `tailwind-merge` prevents style conflicts.
+- Node.js 20+
+- Corepack enabled
 
-## 🛠️ Development
+```bash
+corepack enable
+```
 
-To run the development environment and contribute to the project:
+### Install
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/khs990704/TailwindCSS-Components.git
-    cd ss-tailwind-ui
-    ```
+```bash
+yarn install
+```
 
-2.  **Install dependencies:**
-    ```bash
-    yarn install
-    ```
+### Run
 
-3.  **Run Storybook:**
-    ```bash
-    yarn storybook
-    ```
-    This will start the Storybook server, where you can see and develop components interactively.
+```bash
+yarn dev
+```
 
-## 🤝 Contributing
+Default local URL: `http://localhost:6075`
 
-Contributions are welcome! If you're developing a new component like `Avatar`, please follow this structure:
+## Scripts
 
--   **Components**: Place new, feature-rich components in their own directory within `src/features`.
--   **Stories**: Add a Storybook file for your component in `src/stories` to document its usage.
--   **Tests**: Add unit tests to ensure functionality.
+- `yarn dev`: Start development server
+- `yarn build`: Build production assets
+- `yarn preview`: Preview production build
+- `yarn lint`: Run ESLint
+- `yarn test`: Run Vitest (watch mode)
+- `yarn test:run`: Run Vitest once
+- `yarn storybook`: Start Storybook
 
-Please open an issue or submit a pull request to get started.
+## API Notes
 
-## 📝 License
+- API-related clients are in `src/app/api/client.tsx`.
+- Current endpoint values are environment-specific placeholders.
+- Replace `baseURL` values before deploying.
 
-This project is licensed under the MIT License.
+## Build Output
+
+```bash
+yarn build
+```
+
+- Output directory: `dist/`
+- `robots.txt` is copied to `dist/` via Vite plugin
+- Example server config: `nginx/nginx.conf`
