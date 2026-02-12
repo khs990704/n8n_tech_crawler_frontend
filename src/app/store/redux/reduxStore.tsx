@@ -3,6 +3,7 @@ import { configureStore, Tuple } from '@reduxjs/toolkit'
 import { all } from 'redux-saga/effects'
 import { routerSaga, routerSlice } from 'src/app/router/routerReducer.tsx'
 import { themeSlice } from 'src/shared/components/theme/themeReducer.tsx'
+import { dashboardSaga, dashboardSlice } from 'src/features/dashboard/dashboardReducer'
 // import { chatSlice, chatSaga } from 'src/features/chat/chatReducer.tsx'
 // import {
 //     fileSaga,
@@ -10,14 +11,16 @@ import { themeSlice } from 'src/shared/components/theme/themeReducer.tsx'
 // } from 'src/features/chat/components/file/fileReducer.tsx'
 
 const reducers = {
-    // routerReducer: routerSlice.reducer,
-    // themeReducer: themeSlice.reducer,
+    routerReducer: routerSlice.reducer,
+    themeReducer: themeSlice.reducer,
     // chatReducer: chatSlice.reducer,
     // fileReducer: fileSlice.reducer,
+    dashboardReducer: dashboardSlice.reducer,
 }
 
 export function* rootSaga() {
     // yield all([routerSaga(), chatSaga(), fileSaga()])
+    yield all([routerSaga(), dashboardSaga()])
 }
 
 const sagaMiddleware = createSagaMiddleware()

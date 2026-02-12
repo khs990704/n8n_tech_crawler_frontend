@@ -1,23 +1,59 @@
-import { KeywordStat } from 'src/features/dashboard/types'
-
-interface KeywordRankingProps {
-    keywords: KeywordStat[]
-    selectedKeyword: string
-    onSelect: (keyword: string) => void
-}
+import { useEffect, useMemo } from 'react'
+import { useAppSelector } from 'src/app/store/redux/reduxHooks'
+import { RootState } from 'src/app/store/redux/reduxStore'
+import { KeywordInfoResponse, KeywordRankingProps } from 'src/features/dashboard/dashboardType'
 
 const KeywordRanking = ({
     keywords,
     selectedKeyword,
     onSelect,
 }: KeywordRankingProps) => {
+    const { keywordInfoData } = useAppSelector((state: RootState) => ({
+        keywordInfoData: state.dashboardReducer.keywordInfo
+            ?.data as KeywordInfoResponse | Record<string, unknown> | null,
+    }))
+
+    const rankingItems = useMemo(() => {
+        const normalizedData = Array.isArray(keywordInfoData)
+            ? keywordInfoData
+            : []
+
+        if (normalizedData.length === 0) {
+            return keywords
+        }
+
+        const countByKeyword = normalizedData.reduce(
+            (acc, item) => {
+                acc[item.keyword] = (acc[item.keyword] ?? 0) + 1
+                return acc
+            },
+            {} as Record<string, number>,
+        )
+
+        return Object.entries(countByKeyword)
+            .map(([name, count]) => ({ name, count }))
+            .sort((a, b) => b.count - a.count)
+    }, [keywordInfoData, keywords])
+
+    useEffect(() => {
+        if (rankingItems.length === 0) return
+
+        const hasSelectedKeyword = rankingItems.some(
+            (item) => item.name === selectedKeyword,
+        )
+
+        if (!hasSelectedKeyword) {
+            onSelect(rankingItems[0].name)
+        }
+    }, [onSelect, rankingItems, selectedKeyword])
+
     return (
         <div className="flex h-full flex-col rounded-[8px] bg-white p-[20px] shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
             <h2 className="mb-[20px] text-[18px] font-bold text-[#1a1a1a]">
                 🔝 상위 키워드
             </h2>
             <ul className="flex flex-1 flex-col gap-[8px]">
-                {keywords.map((item, idx) => (
+                {rankingItems.map((item, idx) => (
                     <li key={item.name} className="flex-1">
                         <button
                             type="button"
