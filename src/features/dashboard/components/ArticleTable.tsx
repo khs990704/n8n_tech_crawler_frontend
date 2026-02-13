@@ -10,13 +10,17 @@ import {
 const ArticleTable = ({ keyword, articles }: ArticleTableProps) => {
     const PER_PAGE = 10
     const { keywordInfoData } = useAppSelector((state: RootState) => ({
-        keywordInfoData: state.dashboardReducer.keywordInfo
-            ?.data as KeywordInfoResponse | Record<string, unknown> | null,
+        keywordInfoData: state.dashboardReducer.keywordInfo?.data as
+            | KeywordInfoResponse
+            | Record<string, unknown>
+            | null,
     }))
     const [currentPage, setCurrentPage] = useState(1)
 
     const mappedArticles = useMemo(() => {
-        const normalizedData: KeywordInfoArticle[] = Array.isArray(keywordInfoData)
+        const normalizedData: KeywordInfoArticle[] = Array.isArray(
+            keywordInfoData,
+        )
             ? keywordInfoData
             : []
 
@@ -93,46 +97,46 @@ const ArticleTable = ({ keyword, articles }: ArticleTableProps) => {
             ) : (
                 <div>
                     <div className="overflow-x-auto">
-                    <table className="w-full border-collapse">
-                        <thead className="bg-zinc-50">
-                            <tr className="border-b-2 border-zinc-200">
-                                <th className="px-[12px] py-[12px] text-left text-[14px] font-bold tracking-[0.5px] text-[#666]">
-                                    NO
-                                </th>
-                                <th className="px-[12px] py-[12px] text-left text-[14px] font-bold tracking-[0.5px] text-[#666]">
-                                    기사 제목
-                                </th>
-                                <th className="px-[12px] py-[12px] text-left text-[14px] font-bold tracking-[0.5px] text-[#666]">
-                                    원문
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {pagedArticles.map((article) => (
-                                <tr
-                                    key={`${article.number}-${article.link}`}
-                                    className="border-b border-zinc-200 hover:bg-zinc-50"
-                                >
-                                    <td className="px-[12px] py-[12px] text-[15px] text-[#999]">
-                                        {article.number}
-                                    </td>
-                                    <td className="px-[12px] py-[12px] text-[15px] font-medium text-[#1a1a1a]">
-                                        {article.title}
-                                    </td>
-                                    <td className="px-[12px] py-[12px] text-[15px]">
-                                        <a
-                                            href={article.link}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="text-blue-600 hover:text-blue-800 hover:underline"
-                                        >
-                                            Open
-                                        </a>
-                                    </td>
+                        <table className="w-full border-collapse">
+                            <thead className="bg-zinc-50">
+                                <tr className="border-b-2 border-zinc-200">
+                                    <th className="px-[12px] py-[12px] text-left text-[14px] font-bold tracking-[0.5px] text-[#666]">
+                                        NO
+                                    </th>
+                                    <th className="px-[12px] py-[12px] text-left text-[14px] font-bold tracking-[0.5px] text-[#666]">
+                                        기사 제목
+                                    </th>
+                                    <th className="px-[12px] py-[12px] text-left text-[14px] font-bold tracking-[0.5px] text-[#666]">
+                                        원문
+                                    </th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {pagedArticles.map((article) => (
+                                    <tr
+                                        key={`${article.number}-${article.link}`}
+                                        className="border-b border-zinc-200 hover:bg-zinc-50"
+                                    >
+                                        <td className="px-[12px] py-[12px] text-[15px] text-[#999]">
+                                            {article.number}
+                                        </td>
+                                        <td className="px-[12px] py-[12px] text-[15px] font-medium text-[#1a1a1a]">
+                                            {article.title}
+                                        </td>
+                                        <td className="px-[12px] py-[12px] text-[15px]">
+                                            <a
+                                                href={article.link}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="text-blue-600 hover:text-blue-800 hover:underline"
+                                            >
+                                                Open
+                                            </a>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
 
                     {totalPages > 1 && (
@@ -158,7 +162,9 @@ const ArticleTable = ({ keyword, articles }: ArticleTableProps) => {
                                     <button
                                         key={page}
                                         type="button"
-                                        onClick={() => setCurrentPage(page as number)}
+                                        onClick={() =>
+                                            setCurrentPage(page as number)
+                                        }
                                         className={`cursor-pointer rounded-[6px] border px-[12px] py-[6px] text-[13px] transition ${
                                             page === currentPage
                                                 ? 'border-blue-600 bg-blue-600 font-bold text-white'

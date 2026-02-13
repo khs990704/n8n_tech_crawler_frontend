@@ -3,7 +3,10 @@ import { configureStore, Tuple } from '@reduxjs/toolkit'
 import { all } from 'redux-saga/effects'
 import { routerSaga, routerSlice } from 'src/app/router/routerReducer.tsx'
 import { themeSlice } from 'src/shared/components/theme/themeReducer.tsx'
-import { dashboardSaga, dashboardSlice } from 'src/features/dashboard/dashboardReducer'
+import {
+    dashboardSaga,
+    dashboardSlice,
+} from 'src/features/dashboard/dashboardReducer'
 // import { chatSlice, chatSaga } from 'src/features/chat/chatReducer.tsx'
 // import {
 //     fileSaga,

@@ -1,7 +1,10 @@
 import { useEffect, useMemo } from 'react'
 import { useAppSelector } from 'src/app/store/redux/reduxHooks'
 import { RootState } from 'src/app/store/redux/reduxStore'
-import { KeywordInfoResponse, KeywordRankingProps } from 'src/features/dashboard/dashboardType'
+import {
+    KeywordInfoResponse,
+    KeywordRankingProps,
+} from 'src/features/dashboard/dashboardType'
 
 const KeywordRanking = ({
     keywords,
@@ -9,8 +12,10 @@ const KeywordRanking = ({
     onSelect,
 }: KeywordRankingProps) => {
     const { keywordInfoData } = useAppSelector((state: RootState) => ({
-        keywordInfoData: state.dashboardReducer.keywordInfo
-            ?.data as KeywordInfoResponse | Record<string, unknown> | null,
+        keywordInfoData: state.dashboardReducer.keywordInfo?.data as
+            | KeywordInfoResponse
+            | Record<string, unknown>
+            | null,
     }))
 
     const rankingItems = useMemo(() => {
