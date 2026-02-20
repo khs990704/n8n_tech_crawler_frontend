@@ -3,6 +3,7 @@ import { WordcloudCardProps } from 'src/features/dashboard/dashboardType'
 
 const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
     const [isLoadFailed, setIsLoadFailed] = useState(false)
+    const [cacheBuster, setCacheBuster] = useState<number>(Date.now())
     const FASTAPI_MEDIA_HOST =
         import.meta.env.VITE_FASTAPI_MEDIA_HOST ?? 'http://127.0.0.1:8100'
 
@@ -19,7 +20,14 @@ const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
 
     useEffect(() => {
         setIsLoadFailed(false)
+        setCacheBuster(Date.now())
     }, [resolvedImageUrl])
+
+    const imageSrc = useMemo(() => {
+        if (!resolvedImageUrl) return ''
+        const separator = resolvedImageUrl.includes('?') ? '&' : '?'
+        return `${resolvedImageUrl}${separator}v=${cacheBuster}`
+    }, [cacheBuster, resolvedImageUrl])
 
     return (
         <div className="rounded-[8px] bg-white p-[20px] shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
@@ -29,7 +37,7 @@ const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
                 </div>
             ) : (
                 <img
-                    src={resolvedImageUrl}
+                    src={imageSrc}
                     alt="Keyword dashboard"
                     onError={() => setIsLoadFailed(true)}
                     className="block aspect-[1000/700] w-full rounded-[6px] object-contain"
