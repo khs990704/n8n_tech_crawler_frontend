@@ -92,7 +92,9 @@ const ArticleTable = ({ keyword, articles }: ArticleTableProps) => {
             </div>
 
             <div className="mb-[16px] inline-flex items-center gap-[8px] rounded-full bg-blue-500/15 px-[14px] py-[6px]">
-                <span className="text-[13px] text-slate-400">선택된 키워드</span>
+                <span className="text-[13px] text-slate-400">
+                    선택된 키워드
+                </span>
                 <strong className="text-[13px] font-semibold text-blue-400">
                     {keyword || '-'}
                 </strong>
@@ -111,13 +113,13 @@ const ArticleTable = ({ keyword, articles }: ArticleTableProps) => {
                         <table className="w-full border-collapse">
                             <thead>
                                 <tr className="border-b border-slate-700/50 bg-slate-900/50">
-                                    <th className="w-[60px] px-[16px] py-[12px] text-left text-[12px] font-semibold uppercase tracking-[0.8px] text-slate-500">
+                                    <th className="w-[60px] px-[16px] py-[12px] text-center text-[12px] font-semibold tracking-[0.8px] text-slate-500 uppercase">
                                         NO
                                     </th>
-                                    <th className="px-[16px] py-[12px] text-left text-[12px] font-semibold uppercase tracking-[0.8px] text-slate-500">
+                                    <th className="px-[16px] py-[12px] text-left text-[13px] font-semibold tracking-[0.8px] text-slate-500 uppercase">
                                         기사 제목
                                     </th>
-                                    <th className="w-[80px] px-[16px] py-[12px] text-left text-[12px] font-semibold uppercase tracking-[0.8px] text-slate-500">
+                                    <th className="w-[80px] px-[16px] py-[12px] text-center text-[13px] font-semibold tracking-[0.8px] text-slate-500 uppercase">
                                         원문
                                     </th>
                                 </tr>
@@ -128,18 +130,18 @@ const ArticleTable = ({ keyword, articles }: ArticleTableProps) => {
                                         key={`${article.number}-${article.link}`}
                                         className="transition-colors hover:bg-slate-700/30"
                                     >
-                                        <td className="px-[16px] py-[14px] text-[13px] font-medium text-slate-500">
+                                        <td className="px-[16px] py-[14px] text-center text-[13px] font-medium text-slate-500">
                                             {article.number}
                                         </td>
                                         <td className="px-[16px] py-[14px] text-[14px] font-medium text-slate-200">
                                             {article.title}
                                         </td>
-                                        <td className="px-[16px] py-[14px]">
+                                        <td className="px-[16px] py-[14px] text-center">
                                             <a
                                                 href={article.link}
                                                 target="_blank"
                                                 rel="noreferrer"
-                                                className="inline-flex items-center gap-[4px] rounded-[6px] bg-blue-500/15 px-[10px] py-[4px] text-[12px] font-medium text-blue-400 transition-colors hover:bg-blue-500/25 hover:text-blue-300"
+                                                className="inline-flex items-center gap-[4px] rounded-[6px] bg-blue-500/15 px-[10px] py-[4px] text-[12px] font-medium whitespace-nowrap text-blue-400 transition-colors hover:bg-blue-500/25 hover:text-blue-300"
                                             >
                                                 열기 ↗
                                             </a>
