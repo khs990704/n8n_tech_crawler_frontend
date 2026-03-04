@@ -10,41 +10,28 @@ const PeriodTabs = ({ selectedPeriod, onSelectPeriod }: PeriodTabsProps) => {
         dispatch(dashboardAction.getKeywordInfo({ period }))
     }
 
+    const PERIOD_OPTIONS: { value: '3day' | '7day' | '1month'; label: string }[] = [
+        { value: '3day', label: '3일' },
+        { value: '7day', label: '1주' },
+        { value: '1month', label: '1달' },
+    ]
+
     return (
-        <div className="mb-[15px] flex gap-[10px]">
-            <button
-                type="button"
-                onClick={() => handleClick('3day')}
-                className={`rounded-[6px] border-2 px-[18px] py-[9px] text-[15px] leading-none font-bold transition ${
-                    selectedPeriod === '3day'
-                        ? 'border-blue-600 bg-blue-600 text-white'
-                        : 'border-zinc-200 bg-white text-zinc-600 hover:border-blue-600 hover:text-blue-600'
-                }`}
-            >
-                3 일
-            </button>
-            <button
-                type="button"
-                onClick={() => handleClick('7day')}
-                className={`rounded-[6px] border-2 px-[18px] py-[9px] text-[15px] leading-none font-bold transition ${
-                    selectedPeriod === '7day'
-                        ? 'border-blue-600 bg-blue-600 text-white'
-                        : 'border-zinc-200 bg-white text-zinc-600 hover:border-blue-600 hover:text-blue-600'
-                }`}
-            >
-                1 주
-            </button>
-            <button
-                type="button"
-                onClick={() => handleClick('1month')}
-                className={`rounded-[6px] border-2 px-[18px] py-[9px] text-[15px] leading-none font-bold transition ${
-                    selectedPeriod === '1month'
-                        ? 'border-blue-600 bg-blue-600 text-white'
-                        : 'border-zinc-200 bg-white text-zinc-600 hover:border-blue-600 hover:text-blue-600'
-                }`}
-            >
-                1 달
-            </button>
+        <div className="mb-[14px] flex gap-[4px] rounded-[12px] bg-slate-700/50 p-[4px]">
+            {PERIOD_OPTIONS.map(({ value, label }) => (
+                <button
+                    key={value}
+                    type="button"
+                    onClick={() => handleClick(value)}
+                    className={`flex-1 rounded-[9px] px-[16px] py-[9px] text-[14px] font-semibold leading-none transition-all duration-200 ${
+                        selectedPeriod === value
+                            ? 'bg-slate-900 text-blue-400 shadow-sm'
+                            : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                >
+                    {label}
+                </button>
+            ))}
         </div>
     )
 }

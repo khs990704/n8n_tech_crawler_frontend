@@ -27,18 +27,25 @@ const Dashboard = () => {
     }, [dispatch, period])
 
     return (
-        <div className="min-h-screen bg-[#f5f5f5] p-[20px] text-[17px] text-[#333]">
+        <div className="min-h-screen bg-[#0f172a] p-[24px] text-[17px] text-slate-100">
             <div className="mx-auto max-w-[1400px]">
-                <header className="mb-[30px]">
-                    <h1 className="mb-[10px] text-[30px] leading-[1.2] font-bold text-[#1a1a1a]">
-                        📊 AI 키워드 대시보드
-                    </h1>
-                    <p className="text-[15px] text-[#666]">
-                        실시간 AI 관련 키워드 분석 및 기사 조회
-                    </p>
+                <header className="mb-[36px]">
+                    <div className="flex items-center gap-[14px]">
+                        <div className="flex h-[48px] w-[48px] shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-blue-500 to-indigo-600 text-[24px] leading-none shadow-lg shadow-blue-900/60">
+                            📊
+                        </div>
+                        <div>
+                            <h1 className="text-[28px] font-extrabold leading-[1.2] text-white">
+                                AI 키워드 대시보드
+                            </h1>
+                            <p className="mt-[4px] text-[14px] text-slate-400">
+                                실시간 AI 관련 키워드 분석 및 기사 조회
+                            </p>
+                        </div>
+                    </div>
                 </header>
 
-                <section className="mb-[30px] grid grid-cols-1 gap-[20px] lg:grid-cols-[1.5fr_1fr]">
+                <section className="mb-[24px] grid grid-cols-1 gap-[20px] lg:grid-cols-[1.5fr_1fr]">
                     <div className="h-full">
                         <PeriodTabs
                             selectedPeriod={period}

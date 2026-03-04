@@ -30,17 +30,21 @@ const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
     }, [cacheBuster, resolvedImageUrl])
 
     return (
-        <div className="rounded-[8px] bg-white p-[20px] shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
+        <div className="overflow-hidden rounded-[14px] border border-slate-700/50 bg-slate-800 shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
             {isLoadFailed ? (
-                <div className="flex aspect-[1000/700] w-full items-center justify-center rounded-[6px] border border-dashed border-zinc-300 bg-zinc-50 text-[14px] text-zinc-500">
-                    Failed to load image: {resolvedImageUrl}
+                <div className="flex aspect-[1000/700] w-full flex-col items-center justify-center gap-[8px] text-center">
+                    <span className="text-[40px] leading-none">🖼️</span>
+                    <p className="text-[14px] font-medium text-slate-400">
+                        이미지를 불러올 수 없습니다
+                    </p>
+                    <p className="text-[12px] text-slate-600">{resolvedImageUrl}</p>
                 </div>
             ) : (
                 <img
                     src={imageSrc}
                     alt="Keyword dashboard"
                     onError={() => setIsLoadFailed(true)}
-                    className="block aspect-[1000/700] w-full rounded-[6px] object-contain"
+                    className="block aspect-[1000/700] w-full object-contain"
                 />
             )}
         </div>
