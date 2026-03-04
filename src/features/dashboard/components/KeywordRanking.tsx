@@ -27,17 +27,16 @@ const KeywordRanking = ({
             return keywords
         }
 
-        const countByKeyword = normalizedData.reduce(
-            (acc, item) => {
-                acc[item.keyword] = (acc[item.keyword] ?? 0) + 1
-                return acc
-            },
-            {} as Record<string, number>,
-        )
+        const rankingMap = new Map<string, number>()
 
-        return Object.entries(countByKeyword)
-            .map(([name, count]) => ({ name, count }))
-            .sort((a, b) => b.count - a.count)
+        for (const item of normalizedData) {
+            rankingMap.set(item.keyword, (rankingMap.get(item.keyword) ?? 0) + 1)
+        }
+
+        return Array.from(rankingMap.entries()).map(([name, count]) => ({
+            name,
+            count,
+        }))
     }, [keywordInfoData, keywords])
 
     useEffect(() => {
