@@ -3,6 +3,7 @@ import PeriodTabs from 'src/features/dashboard/components/PeriodTabs'
 import WordcloudCard from 'src/features/dashboard/components/WordcloudCard'
 import KeywordRanking from 'src/features/dashboard/components/KeywordRanking'
 import ArticleTable from 'src/features/dashboard/components/ArticleTable'
+import KeywordChange from 'src/features/dashboard/components/KeywordChange'
 import { PeriodKey } from 'src/features/dashboard/dashboardType'
 import { useAppDispatch } from 'src/app/store/redux/reduxHooks'
 import { dashboardAction } from 'src/features/dashboard/dashboardReducer'
@@ -24,6 +25,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         dispatch(dashboardAction.getKeywordInfo({ period }))
+        dispatch(dashboardAction.getKeywordChange({ period }))
     }, [dispatch, period])
 
     return (
@@ -60,6 +62,10 @@ const Dashboard = () => {
                             onSelect={setSelectedKeyword}
                         />
                     </div>
+                </section>
+
+                <section className="mb-[24px]">
+                    <KeywordChange />
                 </section>
 
                 <ArticleTable keyword={selectedKeyword} articles={[]} />

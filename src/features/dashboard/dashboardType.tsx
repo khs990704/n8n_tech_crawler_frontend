@@ -46,3 +46,22 @@ export interface ArticleTableProps {
     keyword: string
     articles: ArticleItem[]
 }
+
+export interface KeywordChangeItem {
+    keyword: string
+    cur: number
+    prev: number
+    delta: number
+    pct: number | null
+}
+
+export interface KeywordChangeResponse {
+    period: PeriodKey
+    window: {
+        current: { start: string; end: string }
+        previous: { start: string; end: string }
+    }
+    rising: KeywordChangeItem[]
+    falling: KeywordChangeItem[]
+    new: KeywordChangeItem[]
+}

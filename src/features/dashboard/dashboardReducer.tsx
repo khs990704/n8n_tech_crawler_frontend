@@ -1,5 +1,5 @@
 import { reduxMaker } from 'src/app/store/redux/reduxUtils'
-import { getKeywordInfo } from './dashboardAPI'
+import { getKeywordChange, getKeywordInfo } from './dashboardAPI'
 
 const prefix = 'dashboard'
 
@@ -9,6 +9,12 @@ const asyncRequests = [
         state: 'keywordInfo',
         initialState: [],
         api: getKeywordInfo,
+    },
+    {
+        action: 'getKeywordChange',
+        state: 'keywordChange',
+        initialState: null,
+        api: getKeywordChange,
     },
 ] as const
 

@@ -64,7 +64,7 @@ const KeywordRanking = ({
         <div className="flex h-full flex-col rounded-[14px] border border-slate-700/50 bg-slate-800 p-[20px] shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
             <h2 className="mb-[16px] flex items-center gap-[10px] text-[18px] font-bold text-white">
                 <span className="flex h-[32px] w-[32px] items-center justify-center rounded-[8px] bg-gradient-to-br from-blue-500 to-indigo-600 text-[16px]">
-                    🔝
+                    👑
                 </span>
                 상위 키워드
             </h2>
