@@ -35,3 +35,8 @@ dist-ssr
 
 
 *storybook.log
+
+
+CLAUDE.md
+spec/
+tasks/
