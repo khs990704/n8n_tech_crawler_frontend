@@ -4,6 +4,7 @@ import WordcloudCard from 'src/features/dashboard/components/WordcloudCard'
 import KeywordRanking from 'src/features/dashboard/components/KeywordRanking'
 import ArticleTable from 'src/features/dashboard/components/ArticleTable'
 import KeywordChange from 'src/features/dashboard/components/KeywordChange'
+import KeywordSummry from 'src/features/dashboard/components/KeywordSummry'
 import { PeriodKey } from 'src/features/dashboard/dashboardType'
 import { useAppDispatch } from 'src/app/store/redux/reduxHooks'
 import { dashboardAction } from 'src/features/dashboard/dashboardReducer'
@@ -22,6 +23,10 @@ const Dashboard = () => {
         setPeriod(nextPeriod)
         setSelectedKeyword('')
     }
+
+    useEffect(() => {
+        dispatch(dashboardAction.getKeywordSummary(undefined))
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(dashboardAction.getKeywordInfo({ period }))
@@ -62,6 +67,10 @@ const Dashboard = () => {
                             onSelect={setSelectedKeyword}
                         />
                     </div>
+                </section>
+
+                <section className="mb-[24px]">
+                    <KeywordSummry period={period} />
                 </section>
 
                 <section className="mb-[24px]">

@@ -65,3 +65,14 @@ export interface KeywordChangeResponse {
     falling: KeywordChangeItem[]
     new: KeywordChangeItem[]
 }
+
+export interface PeriodSummary {
+    period: PeriodKey
+    summary: string
+}
+
+export interface KeywordSummaryRequestItem {
+    period: PeriodKey
+    frequencies: Record<string, number>
+    rising: KeywordChangeItem[]
+}
