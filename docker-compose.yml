@@ -1,0 +1,12 @@
+services:
+  n8n-frontend:
+    container_name: n8n-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: n8n-frontend:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Seoul
+    ports:
+      - "6075:80"
