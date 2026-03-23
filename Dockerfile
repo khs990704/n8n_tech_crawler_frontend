@@ -1,5 +1,5 @@
 # ── Stage 1: Build ───────────────────────────────────────────────────────────
-FROM node:20-bookworm-slim AS builder
+FROM node:22 AS builder
 
 WORKDIR /app
 
@@ -8,15 +8,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 make g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Yarn 4 (yarnPath 방식) 사용 — .yarn/releases 포함
-COPY .yarn .yarn
-COPY .yarnrc.yml package.json yarn.lock ./
+COPY package.json ./
 
-RUN node .yarn/releases/yarn-4.9.4.cjs install
+RUN npm install
 
 COPY . .
 
-RUN node .yarn/releases/yarn-4.9.4.cjs run build
+RUN npm run build
 
 # ── Stage 2: Serve ────────────────────────────────────────────────────────────
 FROM nginx:1.27-alpine
