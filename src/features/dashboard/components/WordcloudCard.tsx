@@ -5,7 +5,8 @@ const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
     const [isLoadFailed, setIsLoadFailed] = useState(false)
     const [cacheBuster, setCacheBuster] = useState<number>(Date.now())
     const FASTAPI_MEDIA_HOST =
-        import.meta.env.VITE_FASTAPI_MEDIA_HOST ?? 'http://127.0.0.1:8100'
+        import.meta.env.VITE_FASTAPI_MEDIA_HOST ??
+        'http://host.docker.internal:8100'
 
     const resolvedImageUrl = useMemo(() => {
         if (!imageUrl) return ''
@@ -37,7 +38,9 @@ const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
                     <p className="text-[14px] font-medium text-slate-400">
                         이미지를 불러올 수 없습니다
                     </p>
-                    <p className="text-[12px] text-slate-600">{resolvedImageUrl}</p>
+                    <p className="text-[12px] text-slate-600">
+                        {resolvedImageUrl}
+                    </p>
                 </div>
             ) : (
                 <img
