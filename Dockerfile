@@ -1,5 +1,5 @@
 # ── Stage 1: Build ───────────────────────────────────────────────────────────
-FROM node:22-slim AS builder
+FROM --platform=linux/arm64 node:22-slim AS builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ COPY . .
 RUN node .yarn/releases/yarn-4.9.4.cjs run build
 
 # ── Stage 2: Serve ────────────────────────────────────────────────────────────
-FROM nginx:1.27-alpine
+FROM --platform=linux/arm64 nginx:1.27-alpine
 
 # SPA 라우팅 설정
 COPY nginx.conf /etc/nginx/conf.d/default.conf
