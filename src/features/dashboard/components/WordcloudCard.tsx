@@ -4,8 +4,6 @@ import { WordcloudCardProps } from 'src/features/dashboard/dashboardType'
 const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
     const [isLoadFailed, setIsLoadFailed] = useState(false)
     const [cacheBuster, setCacheBuster] = useState<number>(Date.now())
-    const FASTAPI_MEDIA_HOST =
-        import.meta.env.VITE_FASTAPI_MEDIA_HOST ?? 'http://fastapi_server:8100'
 
     const resolvedImageUrl = useMemo(() => {
         if (!imageUrl) return ''
@@ -13,10 +11,10 @@ const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
             return imageUrl
         }
         if (imageUrl.startsWith('/')) {
-            return `${FASTAPI_MEDIA_HOST}${imageUrl}`
+            return imageUrl
         }
-        return `${FASTAPI_MEDIA_HOST}/${imageUrl}`
-    }, [FASTAPI_MEDIA_HOST, imageUrl])
+        return `/${imageUrl}`
+    }, [imageUrl])
 
     useEffect(() => {
         setIsLoadFailed(false)
