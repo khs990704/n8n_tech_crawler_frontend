@@ -10,3 +10,10 @@ services:
       - TZ=Asia/Seoul
     ports:
       - "6075:80"
+    networks:
+      - ai_bridge
+
+networks:
+  ai_bridge:
+    name: n8n_ai_bridge
+    driver: bridge

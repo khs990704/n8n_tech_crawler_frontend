@@ -5,8 +5,7 @@ const WordcloudCard = ({ imageUrl }: WordcloudCardProps) => {
     const [isLoadFailed, setIsLoadFailed] = useState(false)
     const [cacheBuster, setCacheBuster] = useState<number>(Date.now())
     const FASTAPI_MEDIA_HOST =
-        import.meta.env.VITE_FASTAPI_MEDIA_HOST ??
-        'http://host.docker.internal:8100'
+        import.meta.env.VITE_FASTAPI_MEDIA_HOST ?? 'http://fastapi_server:8100'
 
     const resolvedImageUrl = useMemo(() => {
         if (!imageUrl) return ''
